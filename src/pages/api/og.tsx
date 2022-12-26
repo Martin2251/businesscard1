@@ -1,6 +1,10 @@
 import { ImageResponse } from "@vercel/og";
-import { NextApiRequest, NextApiResponse } from "next";
-import { use } from "react";
+import type { NextApiRequest, NextApiResponse } from "next";
+
+
+export const config = {
+    runtime:"experimental-edge",
+}
 
 const og = async (req:NextApiRequest, res:NextApiResponse) => {
     // get query params from request url

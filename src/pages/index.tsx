@@ -6,14 +6,28 @@ import { signIn, signOut, useSession } from "next-auth/react";
 
 import BusinessCard from "../components/BusinessCard/BusinessCard";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
 const {data:sessionData} = useSession()
+const router = useRouter()
 
 const [inputs,setInputs] = useState({
   title:"",
   website: "",
 })
+
+const {mutate} = trpc.card.publishCard.useMutation({
+  onSuccess(card: { slug: any; }) {
+    console.log("Published")
+    router.push(`/c/${card.slug}`)
+  },
+})
+
+const publish = () =>{
+mutate(inputs)
+}
 
   return (
     <>
