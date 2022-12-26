@@ -1,13 +1,19 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
+
 import { signIn, signOut, useSession } from "next-auth/react";
 
-import { trpc } from "../utils/trpc";
+
 import BusinessCard from "../components/BusinessCard/BusinessCard";
+import { useState } from "react";
 
 const Home: NextPage = () => {
 const {data:sessionData} = useSession()
+
+const [inputs,setInputs] = useState({
+  title:"",
+  website: "",
+})
 
   return (
     <>

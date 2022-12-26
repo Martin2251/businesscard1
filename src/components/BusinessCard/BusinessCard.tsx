@@ -1,6 +1,6 @@
 import { BusinessCard } from '@prisma/client'
 import { useSession } from 'next-auth/react'
-import { FC } from 'react'
+import type { FC } from 'react'
 
 interface BusinessCardProps {
   inputs?: {
